@@ -10,14 +10,14 @@
 
  import { build, emptyDir } from "https://deno.land/x/dnt@0.20.0/mod.ts";
  import { copy } from "https://deno.land/std@0.126.0/fs/copy.ts";
- import { mappings, shims, compilerOptions, packageData } from './config.js';
+ import { mappings, shims, compilerOptions, packageData } from './config.ts';
  
  async function start() {
    await emptyDir("../npm");
  
    await build({
      entryPoints: ["../src/mod.ts"],
-     outDir: "../npm",
+     outDir: "../dist-node",
      mappings: {...mappings},
      shims: {...shims},
      test: true,
@@ -42,6 +42,7 @@
  
    await Deno.copyFile("LICENSE", "npm/LICENSE");
    await Deno.copyFile("README.md", "npm/README.md");
+   await Deno.copyFile("install.json", "npm/install.json");
  }
  
  start();
