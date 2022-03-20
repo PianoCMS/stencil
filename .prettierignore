@@ -1,0 +1,9 @@
+dist-deno
+dist-node
+*.md
+config.json
+install.json
+.eslintrc.json
+package.json
+tsconfig.json
+*.txt
